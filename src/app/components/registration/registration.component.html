@@ -1,0 +1,35 @@
+<h2>Alumni Registration</h2>
+
+<form>
+  <label>Full Name:</label>
+  <input [(ngModel)]="userData.fullName" required />
+
+  <label>Address:</label>
+  <input [(ngModel)]="userData.address" required />
+
+  <label>Profession:</label>
+  <input [(ngModel)]="userData.profession" required />
+
+  <label>Contact Number:</label>
+  <input [(ngModel)]="userData.contactNumber" type="number" required />
+
+  <label>Passout Year:</label>
+  <select [(ngModel)]="userData.passoutYear">
+    <option *ngFor="let year of [2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024]" [value]="year">{{ year }}</option>
+  </select>
+
+  <label>DOB:</label>
+  <input [(ngModel)]="userData.dob" type="date" required />
+
+  <label>Upload Marksheet:</label>
+  <input type="file" (change)="onFileChange($event, 'marksheet')" />
+
+  <label>Payment Method:</label>
+  <img src="upi_qr.png" width="100" />
+  <img src="neft_details.png" width="100" />
+
+  <label>UTR Number:</label>
+  <input [(ngModel)]="userData.utrNumber" required />
+
+  <button (click)="register()">Register</button>
+</form>

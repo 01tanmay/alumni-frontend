@@ -1,0 +1,41 @@
+/* Navigation Bar */
+.custom-navbar {
+  background-color: #e97424; /* Orange background */
+  padding: 6px 0; /* Reduced from 8px to 6px */
+  text-align: center;
+}
+
+/* Navbar List */
+.custom-navbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Navbar Items */
+.custom-navbar ul li {
+  padding: 8px 25px; /* Reduced padding */
+  background-color: #e97424; /* Orange background */
+  border-right: 2px solid white; /* White separators */
+}
+
+/* Remove last border */
+.custom-navbar ul li:last-child {
+  border-right: none;
+}
+
+/* Navbar Links */
+.custom-navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 15px; /* Reduced from 16px */
+  text-transform: uppercase;
+}
+
+/* Hover Effect */
+.custom-navbar ul li a:hover {
+  text-decoration: underline;
+}

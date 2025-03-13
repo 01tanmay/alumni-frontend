@@ -1,0 +1,67 @@
+/* Registration Page Styling */
+.registration-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.registration-container h2 {
+  text-align: center;
+  color: #005aa7;
+  margin-bottom: 20px;
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.registration-form label {
+  font-weight: bold;
+}
+
+.registration-form input,
+.registration-form select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.marksheet-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marksheet-upload input {
+  flex: 1;
+}
+
+.payment-methods {
+  text-align: center;
+  margin: 15px 0;
+}
+
+.payment-methods img {
+  width: 150px;
+  margin: 5px;
+}
+
+.submit-btn {
+  background-color: #e97424;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-btn:hover {
+  background-color: #d1631c;
+}
