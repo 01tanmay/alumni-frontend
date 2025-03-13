@@ -1,35 +1,75 @@
-<h2>Alumni Registration</h2>
+<div class="registration-container">
+  <h2 class="registration-title">Alumni Registration</h2>
 
-<form>
-  <label>Full Name:</label>
-  <input [(ngModel)]="userData.fullName" required />
+  <form class="registration-form">
+    <!-- Personal Information -->
+    <div class="form-section">
+      <h3>Personal Information</h3>
+      <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" [(ngModel)]="userData.fullName" name="fullName" required />
+      </div>
 
-  <label>Address:</label>
-  <input [(ngModel)]="userData.address" required />
+      <div class="form-group">
+        <label>Address:</label>
+        <input type="text" [(ngModel)]="userData.address" name="address" required />
+      </div>
 
-  <label>Profession:</label>
-  <input [(ngModel)]="userData.profession" required />
+      <div class="form-group">
+        <label>Profession:</label>
+        <input type="text" [(ngModel)]="userData.profession" name="profession" required />
+      </div>
 
-  <label>Contact Number:</label>
-  <input [(ngModel)]="userData.contactNumber" type="number" required />
+      <div class="form-group">
+        <label>Contact Number:</label>
+        <input type="tel" [(ngModel)]="userData.contactNumber" name="contactNumber" required />
+      </div>
 
-  <label>Passout Year:</label>
-  <select [(ngModel)]="userData.passoutYear">
-    <option *ngFor="let year of [2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024]" [value]="year">{{ year }}</option>
-  </select>
+      <div class="form-group">
+        <label>Date of Birth:</label>
+        <input type="date" [(ngModel)]="userData.dob" name="dob" required />
+      </div>
+    </div>
 
-  <label>DOB:</label>
-  <input [(ngModel)]="userData.dob" type="date" required />
+    <!-- Academic Details -->
+    <div class="form-section">
+      <h3>Academic Details</h3>
+      <div class="form-group">
+        <label>Passout Year:</label>
+        <select [(ngModel)]="userData.passoutYear" name="passoutYear">
+          <option *ngFor="let year of passoutYears" [value]="year">{{ year }}</option>
+        </select>
+      </div>
 
-  <label>Upload Marksheet:</label>
-  <input type="file" (change)="onFileChange($event)" />
+      <div class="form-group">
+        <label>Marksheet Upload:</label>
+        <input type="file" (change)="onFileChange($event)" />
+      </div>
+    </div>
 
-  <label>Payment Method:</label>
-  <img src="upi_qr.png" width="100" />
-  <img src="neft_details.png" width="100" />
+    <!-- Payment Details -->
+    <div class="form-section">
+      <h3>Payment Details</h3>
+      <div class="form-group">
+        <label>Payment Method:</label>
+        <select [(ngModel)]="userData.paymentMethod" name="paymentMethod" (change)="updatePaymentInfo()">
+          <option value="UPI">UPI</option>
+          <option value="NEFT">NEFT</option>
+          <option value="Bank Transfer">Bank Transfer</option>
+        </select>
+      </div>
 
-  <label>UTR Number:</label>
-  <input [(ngModel)]="userData.utrNumber" required />
+      <div class="form-group">
+        <label>UTR Number:</label>
+        <input type="text" [(ngModel)]="userData.utrNumber" name="utrNumber" required />
+      </div>
 
-  <button (click)="register()">Register</button>
-</form>
+      <!-- Dynamic Field: Show Info Based on Selected Payment Method -->
+      <div class="payment-info" *ngIf="paymentInfo">
+        <p><strong>Payment Instructions:</strong> {{ paymentInfo }}</p>
+      </div>
+    </div>
+
+    <button type="button" class="submit-btn" (click)="register()">Register</button>
+  </form>
+</div>

@@ -1,65 +1,87 @@
-/* Registration Page Styling */
+/* Registration Page Container */
 .registration-container {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 650px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Title Styling */
+.registration-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #005aa7;
+  margin-bottom: 25px;
+}
+
+/* Form Sections */
+.form-section {
   background: #f8f8f8;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.registration-container h2 {
-  text-align: center;
-  color: #005aa7;
+  border-radius: 10px;
   margin-bottom: 20px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Remove Red Line */
+.form-section h3 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* Form Layout */
 .registration-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.registration-form label {
-  font-weight: bold;
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
-.registration-form input,
-.registration-form select {
-  padding: 8px;
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 14px;
+  background: #ffffff;
 }
 
-.marksheet-upload {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+/* Payment Info Section */
+.payment-info {
+  background: #e9f5ff;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #005aa7;
+  margin-top: 10px;
 }
 
-.marksheet-upload input {
-  flex: 1;
-}
-
-.payment-methods {
-  text-align: center;
-  margin: 15px 0;
-}
-
-.payment-methods img {
-  width: 150px;
-  margin: 5px;
-}
-
+/* Submit Button */
 .submit-btn {
   background-color: #e97424;
   color: white;
-  padding: 10px;
+  padding: 12px;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
+  margin-top: 15px;
+  transition: background 0.3s ease;
 }
 
 .submit-btn:hover {

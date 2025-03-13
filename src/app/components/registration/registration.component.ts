@@ -20,8 +20,10 @@ userData: any = {
   };
 
   selectedFile: File | null = null;
+  passoutYears: number[] = [];
+  paymentInfo: string = ''; // Holds dynamic payment instructions
 
-  constructor(private alumniService: AlumniService) {}
+  constructor(private alumniService: AlumniService) { this.generatePassoutYears(); }
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
@@ -49,4 +51,23 @@ userData: any = {
       () => alert('Registration failed. Please try again.')
     );
   }
+
+  generatePassoutYears() {
+      const currentYear = new Date().getFullYear();
+      this.passoutYears = Array.from({ length: currentYear - 2013 }, (_, i) => 2014 + i);
+  }
+
+  updatePaymentInfo() {
+      const method = this.userData.paymentMethod;
+      if (method === 'UPI') {
+        this.paymentInfo = 'Scan the UPI QR Code or use UPI ID: abc@upi';
+      } else if (method === 'NEFT') {
+        this.paymentInfo = 'Use NEFT details: Account No: 123456789, IFSC: ABCD0123456';
+      } else if (method === 'Bank Transfer') {
+        this.paymentInfo = 'Transfer to Account No: 987654321, Bank: XYZ Bank, IFSC: XYZB0009876';
+      } else {
+        this.paymentInfo = '';
+      }
+  }
+
 }
