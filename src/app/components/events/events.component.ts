@@ -13,7 +13,12 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.eventService.getEvents().subscribe((data) => {
+      console.log('Events Data:', data); // Log to check if data is received
       this.events = data;
     });
+  }
+
+  register(eventId: string) {
+    alert(`Registered for event ID: ${eventId}`);
   }
 }

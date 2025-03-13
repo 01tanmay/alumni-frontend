@@ -1,4 +1,4 @@
-/* Events Page Styling */
+/* Events Container */
 .events-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -6,6 +6,7 @@
   padding: 20px;
 }
 
+/* Event List */
 .event-list {
   display: flex;
   flex-wrap: wrap;
@@ -13,36 +14,38 @@
   gap: 20px;
 }
 
+/* Event Card */
 .event-card {
   background-color: #f8f8f8;
   border-radius: 8px;
   padding: 15px;
-  width: 280px;
+  width: 300px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   text-align: left;
 }
 
-.event-card h3 {
-  color: #005aa7;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.event-card p {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 8px;
-}
-
+/* Register Button */
 .register-btn {
   background-color: #e97424;
   color: white;
-  padding: 8px 15px;
+  padding: 10px 15px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 16px;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .register-btn:hover {
   background-color: #d1631c;
+}
+
+/* No Events Message */
+.no-events {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
 }

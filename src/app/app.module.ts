@@ -10,6 +10,8 @@ import { EventsComponent } from './components/events/events.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ContactComponent } from './components/contact/contact.component';
 
+import { AlumniService } from './services/alumni.service'; // Ensure service is imported
+
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -29,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AlumniService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

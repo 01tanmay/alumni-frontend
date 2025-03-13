@@ -1,21 +1,35 @@
 /* Media Page Styling */
 .media-container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
   padding: 20px;
 }
 
-.media-upload {
+/* Title Styling */
+.media-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #005aa7;
   margin-bottom: 20px;
 }
 
-.media-upload input {
-  margin-right: 10px;
+/* Upload Section */
+.media-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.upload-input {
+  padding: 8px;
+  font-size: 14px;
 }
 
 .upload-btn {
-  background-color: #005aa7;
+  background-color: #e97424;
   color: white;
   padding: 8px 15px;
   border: none;
@@ -24,14 +38,16 @@
 }
 
 .upload-btn:hover {
-  background-color: #004080;
+  background-color: #d1631c;
 }
 
+/* Media Gallery */
 .media-gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  margin-top: 20px;
 }
 
 .media-item {

@@ -1,10 +1,17 @@
-<h2>Media Gallery</h2>
-<input type="file" (change)="onFileSelected($event)" />
-<button (click)="uploadMedia()">Upload</button>
+<div class="media-container">
+  <h2 class="media-title">Media Gallery</h2>
 
-<div *ngFor="let media of mediaList">
-  <img *ngIf="media.type === 'image'" [src]="media.url" width="200" />
-  <video *ngIf="media.type === 'video'" width="300" controls>
-    <source [src]="media.url" type="video/mp4" />
-  </video>
+  <!-- Upload Section -->
+  <div class="media-upload">
+    <input type="file" (change)="onFileSelect($event)" class="upload-input" />
+    <button class="upload-btn" (click)="uploadFile()">Upload</button>
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="media-gallery">
+    <div class="media-item" *ngFor="let media of mediaFiles">
+      <img *ngIf="media.type === 'image'" [src]="media.url" alt="Uploaded Image" />
+      <video *ngIf="media.type === 'video'" [src]="media.url" controls></video>
+    </div>
+  </div>
 </div>
