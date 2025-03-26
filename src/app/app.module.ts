@@ -10,7 +10,7 @@ import { EventsComponent } from './components/events/events.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ContactComponent } from './components/contact/contact.component';
 
-import { AlumniService } from './services/alumni.service'; // Ensure service is imported
+import { AlumniService } from './services/alumni.service';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';

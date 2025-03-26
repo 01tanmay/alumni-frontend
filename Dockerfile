@@ -7,5 +7,5 @@ RUN npm run build --prod
 
 # Serve stage
 FROM nginx:alpine
-COPY --from=builder /app/dist/YOUR_PROJECT_NAME /usr/share/nginx/html
+COPY --from=builder /app/dist/angular-frontend/usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
