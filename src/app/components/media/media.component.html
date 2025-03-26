@@ -1,15 +1,18 @@
 <div class="media-container">
   <h2 class="media-title">Media Gallery</h2>
 
-  <!-- Upload Section -->
-  <div class="media-upload">
-    <input type="file" (change)="onFileSelect($event)" class="upload-input" />
-    <button class="upload-btn" (click)="uploadFile()">Upload</button>
+  <!-- Display Media Count -->
+  <p class="media-count">Total Media Files: <strong>{{ mediaCount }}</strong></p>
+
+  <!-- Upload Media Section -->
+  <div class="upload-section">
+    <input type="file" (change)="onFileChange($event)" />
+    <button class="upload-btn" (click)="uploadMedia()">Upload</button>
   </div>
 
-  <!-- Gallery Section -->
-  <div class="media-gallery">
-    <div class="media-item" *ngFor="let media of mediaFiles">
+  <!-- Display Media Gallery -->
+  <div class="gallery">
+    <div *ngFor="let media of mediaList" class="media-item">
       <img *ngIf="media.type === 'image'" [src]="media.url" alt="Uploaded Image" />
       <video *ngIf="media.type === 'video'" [src]="media.url" controls></video>
     </div>

@@ -8,17 +8,26 @@ import { EventService } from '../../services/event.service';
 })
 export class EventsComponent implements OnInit {
   events: any[] = [];
+  errorMessage: string = '';
 
   constructor(private eventService: EventService) {}
 
   ngOnInit() {
-    this.eventService.getEvents().subscribe((data) => {
-      console.log('Events Data:', data); // Log to check if data is received
-      this.events = data;
-    });
+    this.getEvents();
   }
 
-  register(eventId: string) {
-    alert(`Registered for event ID: ${eventId}`);
+  getEvents() {
+    this.eventService.getEvents().subscribe(
+      (data: any) => {
+        this.events = data;
+        if (this.events.length === 0) {
+          this.errorMessage = 'No upcoming events at the moment.';
+        }
+      },
+      (error) => {
+        console.error('Error fetching events:', error);
+        this.errorMessage = 'Failed to fetch events. Please try again later.';
+      }
+    );
   }
 }
