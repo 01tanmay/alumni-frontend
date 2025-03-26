@@ -3,7 +3,7 @@ FROM node:18-alpine as builder
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npm run build --configuration production
+RUN npm run build -- --configuration production --project alumni-frontend
 
 # Serve Stage
 FROM nginx:alpine
