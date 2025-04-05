@@ -21,7 +21,7 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /app/dist/alumni-frontend /usr/share/nginx/html
 
 # ✅ OPTIONAL: Debug fallback in case Angular build is empty
-RUN echo "<h1>Hello from ECS!</h1>" > /usr/share/nginx/html/debug.html
+RUN echo "<h1>Hello from ECS!</h1>" > /usr/share/nginx/html/index.html
 
 # ✅ Recommended Nginx config for Angular SPA routing
 COPY nginx.conf /etc/nginx/conf.d/default.conf
