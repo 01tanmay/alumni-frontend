@@ -1,0 +1,68 @@
+name: Alumni Frontend CI/CD
+
+on:
+  push:
+    branches: [main]
+
+env:
+  AWS_REGION: ap-south-1
+  ECR_REPOSITORY: alumni-frontend
+  ECS_CLUSTER: alumni-cluster
+  ECS_SERVICE: alumni-frontend-service
+  CONTAINER_NAME: alumni-frontend
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Cache Node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./alumni-frontend
+
+      - name: Build Angular app
+        run: npm run build -- --configuration production
+        working-directory: ./alumni-frontend
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Log in to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push Docker image to ECR
+        run: |
+          IMAGE_TAG=$(git rev-parse --short HEAD)
+          docker build -t $ECR_REPOSITORY:$IMAGE_TAG ./alumni-frontend
+          docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push ${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Update ECS service with new image
+        run: |
+          IMAGE_TAG=$(git rev-parse --short HEAD)
+          aws ecs update-service \
+            --cluster $ECS_CLUSTER \
+            --service $ECS_SERVICE \
+            --force-new-deployment \
+            --region $AWS_REGION
