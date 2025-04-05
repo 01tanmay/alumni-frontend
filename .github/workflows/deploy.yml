@@ -61,7 +61,7 @@ jobs:
         id: get-task-def
         run: |
           aws ecs describe-task-definition \
-            --task-definition $ECS_SERVICE \
+            --task-definition alumni-frontend \
             --query "taskDefinition" > task-definition.json
 
       - name: Create new task definition with updated image
