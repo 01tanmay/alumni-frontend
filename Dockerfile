@@ -7,9 +7,14 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Copy source code and build the app
+# Copy all source code
 COPY . .
+
+# Build Angular app for production
 RUN npm run build -- --configuration production
+
+# 🔍 Debug: List built files to verify Angular output
+RUN ls -R /app/dist/alumni-frontend
 
 # Stage 2: Serve the app with Nginx
 FROM nginx:alpine
@@ -17,13 +22,10 @@ FROM nginx:alpine
 # Clean default Nginx content
 RUN rm -rf /usr/share/nginx/html/*
 
-# ✅ Copy correct Angular output folder
+# ✅ Copy Angular output to Nginx root
 COPY --from=builder /app/dist/alumni-frontend /usr/share/nginx/html
 
-# ✅ OPTIONAL: Debug fallback in case Angular build is empty
-RUN echo "<h1>Hello from ECS!</h1>" > /usr/share/nginx/html/index.html
-
-# ✅ Recommended Nginx config for Angular SPA routing
+# Copy SPA-compatible Nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
