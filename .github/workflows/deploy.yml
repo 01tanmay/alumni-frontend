@@ -2,7 +2,7 @@ name: Alumni Frontend CI/CD
 
 on:
   push:
-    branches: [master]
+    branches: [master]  # Use 'main' if your default branch is main
 
 env:
   AWS_REGION: ap-south-1
@@ -34,11 +34,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: ./alumni-frontend
+        working-directory: .
 
       - name: Build Angular app
         run: npm run build -- --configuration production
-        working-directory: ./alumni-frontend
+        working-directory: .
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -54,13 +54,12 @@ jobs:
       - name: Build, tag, and push Docker image to ECR
         run: |
           IMAGE_TAG=$(git rev-parse --short HEAD)
-          docker build -t $ECR_REPOSITORY:$IMAGE_TAG ./alumni-frontend
+          docker build -t $ECR_REPOSITORY:$IMAGE_TAG .
           docker tag $ECR_REPOSITORY:$IMAGE_TAG ${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:$IMAGE_TAG
           docker push ${{ steps.login-ecr.outputs.registry }}/$ECR_REPOSITORY:$IMAGE_TAG
 
       - name: Update ECS service with new image
         run: |
-          IMAGE_TAG=$(git rev-parse --short HEAD)
           aws ecs update-service \
             --cluster $ECS_CLUSTER \
             --service $ECS_SERVICE \
