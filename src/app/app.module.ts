@@ -9,11 +9,13 @@ import { MediaComponent } from './components/media/media.component';
 import { EventsComponent } from './components/events/events.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { AlumniService } from './services/alumni.service';
 
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { HttpClientModule } from '@angular/common/http';
     MediaComponent,
     EventsComponent,
     RegistrationComponent,
-    ContactComponent
+    ContactComponent,
+    RegistrationSuccessComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
   ],
   providers: [AlumniService],
   bootstrap: [AppComponent]

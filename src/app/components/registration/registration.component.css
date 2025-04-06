@@ -1,89 +1,103 @@
-/* Registration Page Container */
 .registration-container {
-  max-width: 650px;
-  margin: 30px auto;
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
-/* Title Styling */
 .registration-title {
   text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  color: #005aa7;
-  margin-bottom: 25px;
-}
-
-/* Form Sections */
-.form-section {
-  background: #f8f8f8;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Remove Red Line */
-.form-section h3 {
-  font-size: 18px;
-  color: #333;
+  font-size: 24px;
   margin-bottom: 15px;
-  font-weight: bold;
 }
 
-/* Form Layout */
 .registration-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
-/* Form Group */
+.form-section {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  background: #f9f9f9;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
+  margin-bottom: 10px;
 }
 
-.form-group label {
-  font-weight: bold;
+label {
+  font-weight: 500;
   margin-bottom: 5px;
 }
 
-.form-group input,
-.form-group select {
-  padding: 10px;
+input, select {
+  padding: 8px;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background: #ffffff;
+  border: 1px solid #aaa;
 }
 
-/* Payment Info Section */
-.payment-info {
-  background: #e9f5ff;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  color: #005aa7;
-  margin-top: 10px;
-}
-
-/* Submit Button */
-.submit-btn {
-  background-color: #e97424;
+.submit-btn, button {
+  background-color: #ff6f00;
   color: white;
-  padding: 12px;
+  padding: 10px;
   border: none;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 16px;
-  margin-top: 15px;
-  transition: background 0.3s ease;
+  margin-top: 10px;
+  transition: 0.2s;
 }
 
-.submit-btn:hover {
-  background-color: #d1631c;
+.submit-btn:hover, button:hover {
+  background-color: #e65100;
 }
+
+.validation-message {
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.validation-message.success {
+  color: green;
+}
+
+.validation-message.error {
+  color: red;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .registration-form {
+    padding: 10px;
+  }
+
+  .registration-title {
+    font-size: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 8px;
+  }
+
+  input, select {
+    font-size: 14px;
+  }
+
+  .submit-btn, button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .field-error {
+    color: red;
+    font-size: 13px;
+    margin-top: 2px;
+  }
+
+}
+

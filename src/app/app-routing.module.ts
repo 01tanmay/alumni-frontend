@@ -4,6 +4,7 @@ import { EventsComponent } from './components/events/events.component';
 import { MediaComponent } from './components/media/media.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
 
 const routes: Routes = [
   { path: 'media', component: MediaComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   //{ path: 'registration', component: RegistrationComponent },
   //{ path: '', redirectTo: 'media', pathMatch: 'full' },
   //{ path: 'app-events', component: EventsComponent },
+  { path: 'registration-success', component: RegistrationSuccessComponent },
   { path: 'app-registration/:id', component: RegistrationComponent },
 ];
 
