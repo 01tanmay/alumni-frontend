@@ -1,51 +1,94 @@
-/* Events Container */
-.events-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 20px;
+.event-wrapper {
+  padding: 40px 20px;
+  background-color: #f7f7f7;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-/* Event List */
-.event-list {
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.no-events-msg,
+.error-msg {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
 
-/* Event Card */
 .event-card {
-  background-color: #f8f8f8;
-  border-radius: 8px;
-  padding: 15px;
-  width: 300px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.08);
+  width: 290px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-/* Register Button */
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-header {
+  background-color: #005aa7;
+  color: #fff;
+  padding: 16px;
+}
+
+.event-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.event-header p {
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.event-body {
+  padding: 16px;
+}
+
+.desc {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.badge-row {
+  margin-bottom: 12px;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #eee;
+  color: #444;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 16px;
+  margin-right: 8px;
+}
+
 .register-btn {
+  width: 100%;
   background-color: #e97424;
   color: white;
-  padding: 10px 15px;
   border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
   cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-  text-align: center;
 }
 
 .register-btn:hover {
-  background-color: #d1631c;
-}
-
-/* No Events Message */
-.no-events {
-  font-size: 18px;
-  font-weight: bold;
-  color: #666;
+  background-color: #cf631f;
 }

@@ -1,33 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
+import { Event } from '../../models/event.model';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
-  styleUrls: ['./events.component.css'],
+  styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-  events: any[] = [];
+  events: Event[] = [];
   errorMessage: string = '';
 
   constructor(private eventService: EventService) {}
 
-  ngOnInit() {
-    this.getEvents();
-  }
-
-  getEvents() {
-    this.eventService.getEvents().subscribe(
-      (data: any) => {
+  ngOnInit(): void {
+    this.eventService.getAllEvents().subscribe({
+      next: (data) => {
         this.events = data;
-        if (this.events.length === 0) {
-          this.errorMessage = 'No upcoming events at the moment.';
-        }
       },
-      (error) => {
-        console.error('Error fetching events:', error);
-        this.errorMessage = 'Failed to fetch events. Please try again later.';
+      error: (error) => {
+        this.errorMessage = 'Failed to load events.';
+        console.error(error);
       }
-    );
+    });
   }
 }
