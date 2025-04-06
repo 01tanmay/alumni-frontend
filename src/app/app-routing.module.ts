@@ -10,8 +10,10 @@ const routes: Routes = [
   { path: 'events', component: EventsComponent },
   { path: 'contact', component: ContactComponent },
   //{ path: '**', redirectTo: 'media' }, // Catch-all for invalid URLs
-  { path: 'registration', component: RegistrationComponent },
+  //{ path: 'registration', component: RegistrationComponent },
   //{ path: '', redirectTo: 'media', pathMatch: 'full' },
+  //{ path: 'app-events', component: EventsComponent },
+  { path: 'app-registration/:id', component: RegistrationComponent },
 ];
 
 @NgModule({

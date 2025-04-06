@@ -1,6 +1,10 @@
 <div class="registration-container">
   <h2 class="registration-title">Alumni Registration</h2>
 
+  <p *ngIf="eventName" class="event-id-info">
+    You are registering for: <strong>{{ eventName }}</strong>
+  </p>
+
   <form class="registration-form">
     <!-- Personal Information -->
     <div class="form-section">
@@ -43,7 +47,7 @@
 
       <div class="form-group">
         <label>Marksheet Upload:</label>
-        <input type="file" (change)="onFileChange($event)" />
+        <input type="file" name="marksheet" (change)="onFileChange($event)" />
       </div>
     </div>
 
@@ -64,12 +68,18 @@
         <input type="text" [(ngModel)]="userData.utrNumber" name="utrNumber" required />
       </div>
 
-      <!-- Dynamic Field: Show Info Based on Selected Payment Method -->
       <div class="payment-info" *ngIf="paymentInfo">
         <p><strong>Payment Instructions:</strong> {{ paymentInfo }}</p>
       </div>
     </div>
 
-    <button type="button" class="submit-btn" (click)="register()">Register</button>
+    <button
+      type="button"
+      class="submit-btn"
+      (click)="register()"
+      [disabled]="!userData.fullName || !userData.contactNumber || !selectedFile || !userData.eventId"
+    >
+      Register
+    </button>
   </form>
 </div>

@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { AlumniService } from '../../services/alumni.service'; // Ensure service is imported
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AlumniService } from '../../services/alumni.service';
+import { EventService } from '../../services/event.service';
+import { Event } from '../../models/event.model';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrl: './registration.component.css'
+  styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent {
-userData: any = {
+export class RegistrationComponent implements OnInit {
+  userData: any = {
     fullName: '',
     address: '',
     profession: '',
@@ -17,13 +20,40 @@ userData: any = {
     marksheetUrl: '',
     utrNumber: '',
     paymentMethod: '',
+    eventId: null
   };
 
   selectedFile: File | null = null;
   passoutYears: number[] = [];
-  paymentInfo: string = ''; // Holds dynamic payment instructions
+  paymentInfo: string = '';
+  eventName: string = '';
 
-  constructor(private alumniService: AlumniService) { this.generatePassoutYears(); }
+  constructor(
+    private alumniService: AlumniService,
+    private eventService: EventService,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.generatePassoutYears();
+
+    this.route.params.subscribe(params => {
+      const eventIdFromRoute = +params['id'];
+      if (!isNaN(eventIdFromRoute)) {
+        this.userData.eventId = eventIdFromRoute;
+
+        this.eventService.getEventById(eventIdFromRoute).subscribe(
+          (res: any) => {
+            const event: Event = res;
+            this.eventName = event.eventName;
+          },
+          () => {
+            this.eventName = 'Unknown Event';
+          }
+        );
+      }
+    });
+  }
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
@@ -32,7 +62,7 @@ userData: any = {
   }
 
   register() {
-    if (!this.userData.fullName || !this.userData.contactNumber || !this.selectedFile) {
+    if (!this.userData.fullName || !this.userData.contactNumber || !this.selectedFile || !this.userData.eventId) {
       alert('Please fill in all required fields and upload your marksheet.');
       return;
     }
@@ -47,27 +77,26 @@ userData: any = {
     }
 
     this.alumniService.registerAlumni(formData).subscribe(
-      () => alert('Registration successful! Please wait for confirmation.'),
-      () => alert('Registration failed. Please try again.')
+      () => alert('✅ Registration successful! Please wait for confirmation.'),
+      () => alert('❌ Registration failed. Please try again.')
     );
   }
 
   generatePassoutYears() {
-      const currentYear = new Date().getFullYear();
-      this.passoutYears = Array.from({ length: currentYear - 2013 }, (_, i) => 2014 + i);
+    const currentYear = new Date().getFullYear();
+    this.passoutYears = Array.from({ length: currentYear - 2013 }, (_, i) => 2014 + i);
   }
 
   updatePaymentInfo() {
-      const method = this.userData.paymentMethod;
-      if (method === 'UPI') {
-        this.paymentInfo = 'Scan the UPI QR Code or use UPI ID: abc@upi';
-      } else if (method === 'NEFT') {
-        this.paymentInfo = 'Use NEFT details: Account No: 123456789, IFSC: ABCD0123456';
-      } else if (method === 'Bank Transfer') {
-        this.paymentInfo = 'Transfer to Account No: 987654321, Bank: XYZ Bank, IFSC: XYZB0009876';
-      } else {
-        this.paymentInfo = '';
-      }
+    const method = this.userData.paymentMethod;
+    if (method === 'UPI') {
+      this.paymentInfo = 'Scan the UPI QR Code or use UPI ID: abc@upi';
+    } else if (method === 'NEFT') {
+      this.paymentInfo = 'Use NEFT details: Account No: 123456789, IFSC: ABCD0123456';
+    } else if (method === 'Bank Transfer') {
+      this.paymentInfo = 'Transfer to Account No: 987654321, Bank: XYZ Bank, IFSC: XYZB0009876';
+    } else {
+      this.paymentInfo = '';
+    }
   }
-
 }

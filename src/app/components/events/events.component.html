@@ -19,7 +19,12 @@
           <span class="badge">Max: {{ event.maxAttendees }}</span>
           <span class="badge">Registered: {{ event.registeredAttendees }}</span>
         </div>
-        <button class="register-btn">Register Now →</button>
+        <button
+          class="register-btn"
+          (click)="goToRegistration(event.id)"
+        >
+          Register Now →
+        </button>
       </div>
     </div>
   </div>
