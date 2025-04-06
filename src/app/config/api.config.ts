@@ -1,4 +1,4 @@
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 
 export const ApiEndpoints = {
   alumni: `${environment.apiBaseUrl}/alumni`,
