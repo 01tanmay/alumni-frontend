@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiEndpoints } from '../config/api.config';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class EventService {
-  private baseUrl = 'http://localhost:8080/api/events/all';
+  private apiUrl = ApiEndpoints.events;
 
   constructor(private http: HttpClient) {}
 
   getEvents(): Observable<any> {
-    return this.http.get(`${this.baseUrl}`);
+    return this.http.get(`${this.apiUrl}/all`);
   }
 }

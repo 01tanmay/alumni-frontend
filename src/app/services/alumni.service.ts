@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiEndpoints } from '../config/api.config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AlumniService {
-  private apiUrl = 'http://localhost:8080/api/alumni'; // Change this to match your backend URL
+  private apiUrl = ApiEndpoints.alumni;
 
   constructor(private http: HttpClient) {}
 
-  /** Register an Alumni */
   registerAlumni(formData: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, formData);
   }
 
-  /** Validate Marksheet */
   validateMarksheet(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('marksheet', file);
