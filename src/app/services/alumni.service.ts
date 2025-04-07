@@ -15,13 +15,14 @@ export class AlumniService {
     });
   }
 
-  validateMarksheet(file: File, passoutYear: number): Observable<any> {
+  validateMarksheet(file: File, passoutYear: number, seatNumber: string): Observable<any> {
     const formData = new FormData();
     formData.append('marksheet', file);
     formData.append('year', passoutYear.toString());
+    formData.append('seatNumber', seatNumber);
 
     return this.http.post(`${this.apiUrl}/validate-marksheet`, formData, {
-      responseType: 'text' as 'json' // ✅ fixes false error response
+      responseType: 'text' as 'json'
     });
   }
 

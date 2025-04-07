@@ -17,6 +17,7 @@ export class RegistrationComponent implements OnInit {
     contactNumber: '',
     passoutYear: '',
     dob: '',
+    seatNumber: '',  // Added seatNumber here
     marksheetUrl: '',
     utrNumber: '',
     paymentMethod: '',
@@ -58,7 +59,7 @@ export class RegistrationComponent implements OnInit {
 
   generatePassoutYears() {
     const currentYear = new Date().getFullYear();
-    this.passoutYears = Array.from({ length: currentYear - 2013 }, (_, i) => 2014 + i);
+    this.passoutYears = Array.from({ length: currentYear - 2002 + 1 }, (_, i) => 2002 + i);
   }
 
   onFileChange(event: any) {
@@ -72,14 +73,15 @@ export class RegistrationComponent implements OnInit {
   validateMarksheet() {
     this.marksheetStatus = '';
 
-    if (!this.selectedFile || !this.userData.passoutYear) {
-      alert('Please select passout year and upload marksheet.');
+    if (!this.selectedFile || !this.userData.passoutYear || !this.userData.seatNumber) {
+      alert('Please select passout year, enter seat number, and upload marksheet.');
       return;
     }
 
-    this.alumniService.validateMarksheet(this.selectedFile, this.userData.passoutYear)
+    this.alumniService.validateMarksheet(this.selectedFile, this.userData.passoutYear, this.userData.seatNumber)
       .subscribe({
-        next: () => {
+        next: (s3Url: string) => {
+          this.userData.marksheetUrl = s3Url;
           this.marksheetValidated = true;
           this.marksheetStatus = 'success';
         },
@@ -154,9 +156,9 @@ export class RegistrationComponent implements OnInit {
     }
 
     this.alumniService.registerAlumni(formData).subscribe(
-      () =>{
-         alert('🎉 Registration successful!')
-         this.router.navigate(['/registration-success']);
+      () => {
+        alert('🎉 Registration successful!');
+        this.router.navigate(['/registration-success']);
       },
       () => alert('❌ Registration failed. Please try again.')
     );

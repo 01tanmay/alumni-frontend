@@ -69,11 +69,16 @@
       </div>
 
       <div class="form-group">
+        <label>Seat Number:</label>
+        <input type="text" [(ngModel)]="userData.seatNumber" name="seatNumber" required />
+      </div>
+
+      <div class="form-group">
         <label>Marksheet Upload:</label>
         <input type="file" name="marksheet" (change)="onFileChange($event)" required />
       </div>
 
-      <button type="button" (click)="validateMarksheet()">Validate Marksheet</button>
+      <button type="button" (click)="validateMarksheet()">Upload Marksheet</button>
 
       <div *ngIf="marksheetStatus" class="validation-message" [ngClass]="marksheetStatus">
         <span *ngIf="marksheetStatus === 'success'">✅ Marksheet validated successfully.</span>
