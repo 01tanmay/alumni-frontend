@@ -1,18 +1,24 @@
 <header class="header-container">
-  <!-- Logo Section -->
-  <div class="logo-container">
-    <!--<img src="assets/logo.png" alt="School Logo" class="school-logo" />-->
-    <div class="school-title">
-      <h2>Gyan Mata Vidya Vihar Sr Sec School, Nanded</h2>
-    </div>
+  <!-- Logo + School Name -->
+  <div class="logo-section">
+    <!-- Optional logo -->
+    <!-- <img src="assets/logo.png" alt="School Logo" class="school-logo" /> -->
+    <h1 class="school-name">Gyan Mata Vidya Vihar Sr Sec School, Nanded</h1>
   </div>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav class="custom-navbar">
     <ul>
-      <li><a routerLink="/media">MEDIA</a></li>
-      <li><a routerLink="/events">EVENTS</a></li>
-      <li><a routerLink="/contact">CONTACT US</a></li>
+      <li routerLinkActive="active-tab" [routerLinkActiveOptions]="{ exact: true }">
+        <a routerLink="/media">Media</a>
+      </li>
+      <li routerLinkActive="active-tab">
+        <a routerLink="/events">Events</a>
+      </li>
+      <li routerLinkActive="active-tab">
+        <a routerLink="/contact">Contact Us</a>
+      </li>
     </ul>
   </nav>
+
 </header>

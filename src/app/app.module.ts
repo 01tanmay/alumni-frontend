@@ -11,6 +11,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AlumniService } from './services/alumni.service';
 
@@ -34,6 +36,8 @@ import { RegistrationSuccessComponent } from './components/registration-success/
     FormsModule,
     HttpClientModule,
     CommonModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
   ],
   providers: [AlumniService],
   bootstrap: [AppComponent]

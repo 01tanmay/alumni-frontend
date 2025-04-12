@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaService } from '../../services/media.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-media',
@@ -7,26 +8,14 @@ import { MediaService } from '../../services/media.service';
   styleUrls: ['./media.component.css'],
 })
 export class MediaComponent implements OnInit {
-  mediaList: any[] = []; // Store uploaded media
+  mediaList: any[] = [];
   selectedFile: File | null = null;
-  mediaCount: number = 0; // Holds the count of media items
+  mediaCount: number = 0;
 
-  constructor(private mediaService: MediaService) {}
+  constructor(private mediaService: MediaService, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.getMedia(); // Fetch media when component loads
-  }
-
-  getMedia() {
-    this.mediaService.getMedia().subscribe(
-      (data: any) => {
-        this.mediaList = data;
-        this.mediaCount = this.mediaList.length; // Update media count
-      },
-      (error) => {
-        console.error('Error fetching media:', error);
-      }
-    );
+    this.getMedia();
   }
 
   onFileChange(event: any) {
@@ -37,18 +26,32 @@ export class MediaComponent implements OnInit {
 
   uploadMedia() {
     if (!this.selectedFile) {
-      alert('Please select a file to upload.');
+      this.snackBar.open('Please select a file', 'Close', { duration: 3000 });
       return;
     }
 
     this.mediaService.uploadMedia(this.selectedFile).subscribe(
       (response) => {
-        alert('Media uploaded successfully!');
+        this.snackBar.open(response.message, 'Close', { duration: 3000 });
         this.selectedFile = null;
-        this.getMedia(); // Refresh media list and count after upload
+        this.getMedia();
       },
       (error) => {
-        console.error('Error uploading media:', error);
+        console.error('Upload error:', error);
+        this.snackBar.open('Error uploading media. Try again.', 'Close', { duration: 3000 });
+      }
+    );
+  }
+
+  getMedia() {
+    this.mediaService.getMedia().subscribe(
+      (data) => {
+        this.mediaList = data;
+        this.mediaCount = data.length;
+      },
+      (error) => {
+        console.error('Fetch error:', error);
+        this.snackBar.open('Failed to load media list', 'Close', { duration: 3000 });
       }
     );
   }

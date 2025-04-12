@@ -1,41 +1,63 @@
+/* Container */
+.header-container {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding-bottom: 5px;
+}
+
+/* Logo / School Name */
+.logo-section {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.school-name {
+  margin: 0;
+  font-size: 22px;
+  color: #003366;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 /* Navigation Bar */
 .custom-navbar {
-  background-color: #e97424; /* Orange background */
-  padding: 6px 0; /* Reduced from 8px to 6px */
+  background-color: #e97424;
+  padding: 6px 0;
   text-align: center;
 }
 
-/* Navbar List */
+/* Nav List */
 .custom-navbar ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
   display: flex;
   justify-content: center;
+  padding: 0;
+  margin: 0;
 }
 
-/* Navbar Items */
 .custom-navbar ul li {
-  padding: 8px 25px; /* Reduced padding */
-  background-color: #e97424; /* Orange background */
-  border-right: 2px solid white; /* White separators */
+  padding: 10px 30px;
+  border-right: 2px solid #fff;
 }
 
-/* Remove last border */
 .custom-navbar ul li:last-child {
   border-right: none;
 }
 
-/* Navbar Links */
 .custom-navbar ul li a {
   text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 15px; /* Reduced from 16px */
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
   text-transform: uppercase;
 }
 
-/* Hover Effect */
 .custom-navbar ul li a:hover {
   text-decoration: underline;
+}
+
+/* Active tab styling */
+.custom-navbar ul li.active-tab {
+  background-color: #bf5b18; /* Slightly darker orange */
+  border-bottom: 3px solid white;
 }

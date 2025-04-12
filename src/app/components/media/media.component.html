@@ -13,8 +13,21 @@
   <!-- Display Media Gallery -->
   <div class="gallery">
     <div *ngFor="let media of mediaList" class="media-item">
-      <img *ngIf="media.type === 'image'" [src]="media.url" alt="Uploaded Image" />
-      <video *ngIf="media.type === 'video'" [src]="media.url" controls></video>
+      <!-- Image Preview -->
+      <img
+        *ngIf="media.fileType?.includes('image')"
+        [src]="media.fileUrl"
+        [alt]="media.fileName"
+        class="media-preview"
+      />
+
+      <!-- Video Preview -->
+      <video
+        *ngIf="media.fileType?.includes('video')"
+        [src]="media.fileUrl"
+        controls
+        class="media-preview"
+      ></video>
     </div>
   </div>
 </div>

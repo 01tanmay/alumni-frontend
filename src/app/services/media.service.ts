@@ -12,11 +12,12 @@ export class MediaService {
   uploadMedia(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('fileName', file.name);
+    formData.append('fileType', file.type);
     return this.http.post(`${this.apiUrl}/upload`, formData);
   }
 
   getMedia(): Observable<any> {
-    console.log('inside all media');
     return this.http.get(`${this.apiUrl}/all`);
   }
 }

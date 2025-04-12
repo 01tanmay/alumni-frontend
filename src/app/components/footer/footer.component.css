@@ -1,44 +1,48 @@
-/* Footer Styling */
+/* Footer Container */
 .custom-footer {
-  background: linear-gradient(to right, #005aa7, #002f6c); /* Blue gradient */
+  background: linear-gradient(to right, #005aa7, #002f6c);
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   font-size: 14px;
 }
 
-/* Footer Container */
 .footer-container {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  width: 100%;
 }
 
-/* Left Section: School Info */
+/* School Info */
 .footer-info p {
   margin: 0;
-  white-space: nowrap; /* Ensure everything stays in one line */
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-/* Right Section: Social Media */
+/* Social Section */
 .social-media {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  text-align: right;
 }
 
-/* Social Media Icons */
+.social-media p {
+  margin: 0 0 5px;
+  font-weight: 500;
+}
+
 .social-icons {
   display: flex;
   gap: 10px;
+  justify-content: flex-end;
 }
 
 .social-icons img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   transition: transform 0.2s ease-in-out;
+  filter: brightness(0) invert(1);
 }
 
 .social-icons img:hover {
-  transform: scale(1.2);
+  transform: scale(1.25);
 }
