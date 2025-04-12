@@ -13,6 +13,8 @@ export class EventService {
   constructor(private http: HttpClient) {}
 
   getAllEvents(): Observable<Event[]> {
+    console.log('inside all events');
+    console.log('ip: ' + this.apiUrl);
     return this.http.get<Event[]>(`${this.apiUrl}/all`);
   }
 

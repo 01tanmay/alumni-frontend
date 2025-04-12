@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // ✅ FIX
-import { Observable } from 'rxjs'; // ✅ FIX
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { ApiEndpoints } from '../config/api.config';
 
 @Injectable({ providedIn: 'root' })

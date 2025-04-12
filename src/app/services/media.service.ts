@@ -16,6 +16,7 @@ export class MediaService {
   }
 
   getMedia(): Observable<any> {
+    console.log('inside all media');
     return this.http.get(`${this.apiUrl}/all`);
   }
 }
