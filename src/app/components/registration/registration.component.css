@@ -1,65 +1,88 @@
 .registration-container {
-  max-width: 700px;
-  margin: auto;
+  max-width: 850px;
+  margin: 30px auto;
   padding: 20px;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
 }
 
 .registration-title {
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 15px;
+  color: #2c3e50;
 }
 
-.registration-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-section {
-  border: 1px solid #ccc;
+.form-card {
+  background-color: #fff;
+  padding: 18px 20px;
   border-radius: 10px;
-  padding: 15px;
-  background: #f9f9f9;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+}
+
+.form-card h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #37474f;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
 }
 
 .form-group {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
 }
 
-label {
+.form-group label {
   font-weight: 500;
-  margin-bottom: 5px;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #455a64;
 }
 
 input, select {
-  padding: 8px;
+  padding: 8px 10px 8px 32px;
+  font-size: 14px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  border: 1px solid #aaa;
+  background-color: #f9f9f9;
+  transition: 0.2s ease-in-out;
 }
 
-.submit-btn, button {
-  background-color: #ff6f00;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  transition: 0.2s;
+input:focus, select:focus {
+  outline: none;
+  border-color: #2196f3;
+  background-color: #fff;
 }
 
-.submit-btn:hover, button:hover {
-  background-color: #e65100;
+.icon-input span {
+  position: absolute;
+  top: 32px;
+  left: 10px;
+  font-size: 15px;
+  color: #757575;
 }
 
-.validation-message {
+.payment-info {
+  background: #e3f2fd;
+  border-left: 3px solid #1976d2;
+  padding: 8px 12px;
+  border-radius: 5px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.validation-message.success,
+.validation-message.error {
+  font-size: 14px;
   font-weight: 500;
-  margin-top: 5px;
+  margin-top: 6px;
 }
 
 .validation-message.success {
@@ -70,34 +93,39 @@ input, select {
   color: red;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-  .registration-form {
-    padding: 10px;
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  background: linear-gradient(to right, #43a047, #388e3c);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(to right, #2e7d32, #1b5e20);
+}
+
+@media (max-width: 600px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
   }
 
   .registration-title {
-    font-size: 20px;
-  }
-
-  .form-group {
-    margin-bottom: 8px;
+    font-size: 22px;
   }
 
   input, select {
-    font-size: 14px;
-  }
-
-  .submit-btn, button {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .field-error {
-    color: red;
     font-size: 13px;
-    margin-top: 2px;
+    padding: 7px 8px 7px 30px;
   }
 
+  .submit-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
-
