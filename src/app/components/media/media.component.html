@@ -1,33 +1,32 @@
 <div class="media-container">
   <h2 class="media-title">Media Gallery</h2>
+  <p class="media-count">Total Media Files: <strong>{{ totalCount }}</strong></p>
 
-  <!-- Display Media Count -->
-  <p class="media-count">Total Media Files: <strong>{{ mediaCount }}</strong></p>
-
-  <!-- Upload Media Section -->
-  <div class="upload-section">
-    <input type="file" (change)="onFileChange($event)" />
-    <button class="upload-btn" (click)="uploadMedia()">Upload</button>
+  <!-- Image Section -->
+  <div class="section-header">
+    <h3>🖼️ Images</h3>
   </div>
-
-  <!-- Display Media Gallery -->
-  <div class="gallery">
-    <div *ngFor="let media of mediaList" class="media-item">
-      <!-- Image Preview -->
-      <img
-        *ngIf="media.fileType?.includes('image')"
-        [src]="media.fileUrl"
-        [alt]="media.fileName"
-        class="media-preview"
-      />
-
-      <!-- Video Preview -->
-      <video
-        *ngIf="media.fileType?.includes('video')"
-        [src]="media.fileUrl"
-        controls
-        class="media-preview"
-      ></video>
+  <div class="gallery" *ngIf="imageMedia.length > 0; else noImages">
+    <div *ngFor="let media of imageMedia" class="media-card image-card">
+      <img [src]="media.fileUrl" [alt]="media.fileName" />
+      <div class="file-name">{{ media.fileName }}</div>
     </div>
   </div>
+  <ng-template #noImages>
+    <p class="empty-msg">No image files available.</p>
+  </ng-template>
+
+  <!-- Video Section -->
+  <div class="section-header">
+    <h3>🎥 Videos</h3>
+  </div>
+  <div class="gallery" *ngIf="videoMedia.length > 0; else noVideos">
+    <div *ngFor="let media of videoMedia" class="media-card video-card">
+      <video [src]="media.fileUrl" controls></video>
+      <div class="file-name">{{ media.fileName }}</div>
+    </div>
+  </div>
+  <ng-template #noVideos>
+    <p class="empty-msg">No video files available.</p>
+  </ng-template>
 </div>

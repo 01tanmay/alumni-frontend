@@ -1,0 +1,50 @@
+<!-- Login Section -->
+<div *ngIf="!isLoggedIn" class="login-box">
+  <h2>🔐 Admin Login</h2>
+  <input type="text" placeholder="👤 Username" [(ngModel)]="username" />
+  <input type="password" placeholder="🔑 Password" [(ngModel)]="password" />
+  <button (click)="login()">Login</button>
+</div>
+
+<!-- Admin Portal Section -->
+<div class="admin-container" *ngIf="isLoggedIn">
+  <div class="logout-header">
+    <h2>🛠️ Admin Dashboard</h2>
+    <button class="logout-button" (click)="logout()">🚪 Logout</button>
+  </div>
+
+  <!-- Upload Media Section -->
+  <div class="admin-section">
+    <h3>📤 Upload Media</h3>
+    <input type="file" id="mediaUploadInput" (change)="onFileSelected($event)">
+    <button (click)="uploadMedia()">Upload</button>
+    <p class="success" *ngIf="mediaUploadSuccess">{{ mediaUploadSuccess }}</p>
+    <p class="error" *ngIf="mediaUploadError">{{ mediaUploadError }}</p>
+  </div>
+
+  <!-- Register Event Section -->
+  <div class="admin-section">
+    <h3>🗓️ Register New Event</h3>
+    <input type="text" placeholder="Event Name" [(ngModel)]="event.eventName" required>
+    <textarea placeholder="Description" [(ngModel)]="event.description" required></textarea>
+    <input type="date" [(ngModel)]="event.eventDate" required>
+    <input type="text" placeholder="Venue" [(ngModel)]="event.venue" required>
+    <input type="number" placeholder="Max Attendees" [(ngModel)]="event.maxAttendees" required>
+    <button (click)="registerEvent()">Register Event</button>
+    <p class="success" *ngIf="eventSuccess">{{ eventSuccess }}</p>
+    <p class="error" *ngIf="eventError">{{ eventError }}</p>
+  </div>
+
+  <!-- Delete Event Section -->
+  <div class="admin-section">
+    <h3>🗑️ Delete Event</h3>
+    <label for="eventSelect">Select an Event to Delete:</label>
+    <select id="eventSelect" [(ngModel)]="selectedEventId">
+      <option [ngValue]="null">-- Select Event --</option>
+      <option *ngFor="let e of eventList" [ngValue]="e.id">{{ e.eventName }}</option>
+    </select>
+    <button (click)="deleteSelectedEvent()" [disabled]="!selectedEventId">Delete</button>
+    <p class="success" *ngIf="deleteMessage && deleteMessage.includes('successfully')">{{ deleteMessage }}</p>
+    <p class="error" *ngIf="deleteMessage && !deleteMessage.includes('successfully')">{{ deleteMessage }}</p>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { MediaComponent } from './components/media/media.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
+import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
 
 const routes: Routes = [
   { path: 'media', component: MediaComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   //{ path: 'app-events', component: EventsComponent },
   { path: 'registration-success', component: RegistrationSuccessComponent },
   { path: 'app-registration/:id', component: RegistrationComponent },
+   { path: 'admin', component: AdminPortalComponent },
 ];
 
 @NgModule({

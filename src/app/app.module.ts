@@ -18,6 +18,7 @@ import { AlumniService } from './services/alumni.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
+import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RegistrationSuccessComponent } from './components/registration-success/
     RegistrationComponent,
     ContactComponent,
     RegistrationSuccessComponent,
+    AdminPortalComponent,
   ],
   imports: [
     BrowserModule,
