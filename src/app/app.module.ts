@@ -19,6 +19,8 @@ import { AlumniService } from './services/alumni.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
 import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
+import { AlumniNetworkComponent } from './components/alumni-network/alumni-network.component';
+import { SuccessStoriesComponent } from './components/success-stories/success-stories.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { AdminPortalComponent } from './components/admin-portal/admin-portal.com
     ContactComponent,
     RegistrationSuccessComponent,
     AdminPortalComponent,
+    AlumniNetworkComponent,
+    SuccessStoriesComponent,
   ],
   imports: [
     BrowserModule,

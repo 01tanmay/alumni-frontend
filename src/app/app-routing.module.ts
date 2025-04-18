@@ -6,6 +6,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ContactComponent } from './components/contact/contact.component';
 import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
 import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
+import { AlumniNetworkComponent } from './components/alumni-network/alumni-network.component';
+import { SuccessStoriesComponent } from './components/success-stories/success-stories.component';
 
 const routes: Routes = [
   { path: 'media', component: MediaComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   //{ path: 'registration', component: RegistrationComponent },
   //{ path: '', redirectTo: 'media', pathMatch: 'full' },
   //{ path: 'app-events', component: EventsComponent },
+  { path: 'alumni-network', component: AlumniNetworkComponent },
+  { path: 'success-stories', component: SuccessStoriesComponent },
   { path: 'registration-success', component: RegistrationSuccessComponent },
   { path: 'app-registration/:id', component: RegistrationComponent },
    { path: 'admin', component: AdminPortalComponent },
