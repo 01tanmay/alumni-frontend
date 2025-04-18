@@ -1,5 +1,8 @@
 <div class="event-wrapper">
   <h2 class="section-title">Upcoming Events</h2>
+  <div *ngIf="events.length === 0" class="no-events-msg">
+    No upcoming events at the moment. Please check back later!
+  </div>
 
   <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
 
@@ -21,8 +24,7 @@
         </div>
         <button
           class="register-btn"
-          (click)="goToRegistration(event.id)"
-        >
+          (click)="goToRegistration(event.id)">
           Register Now →
         </button>
       </div>

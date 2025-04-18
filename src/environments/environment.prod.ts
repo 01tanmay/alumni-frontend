@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://13.127.116.32:8080/api'
+  apiBaseUrl: 'http://43.204.22.2:8080/api'
 };

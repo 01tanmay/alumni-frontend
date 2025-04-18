@@ -1,20 +1,46 @@
 .event-wrapper {
-  padding: 40px 20px;
-  background-color: #f7f7f7;
+  padding: 30px 20px 60px; /* 👈 Removed extra top padding */
+  background-image: url('/assets/images/building.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.event-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* ✅ Mild transparent overlay */
+  z-index: 0;
+}
+
+.event-wrapper > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-title {
   text-align: center;
-  font-size: 32px;
-  font-weight: 600;
-  margin-bottom: 30px;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #ffffff;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .no-events-msg,
 .error-msg {
   text-align: center;
-  color: #666;
+  color: #fff;
+  background: rgba(255, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 8px;
   margin-bottom: 20px;
 }
 
@@ -22,31 +48,34 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .event-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.08);
-  width: 290px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  background: #ffffff;
+  color: #222;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  width: 300px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .event-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
 }
 
 .event-header {
-  background-color: #005aa7;
+  background: linear-gradient(135deg, #004d7a, #008793);
   color: #fff;
-  padding: 16px;
+  padding: 18px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .event-header h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .event-header p {
@@ -55,40 +84,77 @@
 }
 
 .event-body {
-  padding: 16px;
+  padding: 18px;
 }
 
 .desc {
-  font-size: 14px;
-  color: #333;
+  font-size: 15px;
   margin-bottom: 12px;
 }
 
 .badge-row {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .badge {
   display: inline-block;
-  background-color: #eee;
-  color: #444;
+  background-color: #e0e0e0;
+  color: #333;
   font-size: 12px;
-  padding: 5px 10px;
-  border-radius: 16px;
+  padding: 6px 12px;
+  border-radius: 20px;
   margin-right: 8px;
 }
 
 .register-btn {
   width: 100%;
-  background-color: #e97424;
+  background: linear-gradient(to right, #004d7a, #008793);
   color: white;
   border: none;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 6px;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .register-btn:hover {
-  background-color: #cf631f;
+  background: #007388;
+}
+
+/* ✅ Responsive Design */
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 26px;
+  }
+
+  .event-wrapper {
+    padding: 30px 10px 50px;
+  }
+
+  .event-card {
+    width: 90%;
+  }
+
+  .event-header h3 {
+    font-size: 18px;
+  }
+
+  .desc {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
 }
