@@ -1,0 +1,16 @@
+<div class="onboard-form">
+  <h2>Join Our Alumni Network</h2>
+  <p>Reconnect, support, and grow with fellow alumni. Let others know where you are and how you can help.</p>
+
+  <form (ngSubmit)="submit()" #alumniForm="ngForm">
+    <input type="text" placeholder="Full Name" [(ngModel)]="alumni.fullName" name="fullName" required />
+    <input type="number" placeholder="Graduation Year" [(ngModel)]="alumni.graduationYear" name="graduationYear" required />
+    <input type="text" placeholder="City & State" [(ngModel)]="alumni.city" name="city" required />
+    <input type="text" placeholder="Profession/Company" [(ngModel)]="alumni.profession" name="profession" required />
+    <input type="email" placeholder="Email" [(ngModel)]="alumni.email" name="email" />
+    <label><input type="checkbox" [(ngModel)]="alumni.showEmail" name="showEmail" /> Show Email Publicly</label>
+    <input type="url" placeholder="LinkedIn / Website" [(ngModel)]="alumni.linkedin" name="linkedin" />
+    <textarea placeholder="Short Bio or How You Can Help" [(ngModel)]="alumni.bio" name="bio" rows="3"></textarea>
+    <button type="submit">Join the Network</button>
+  </form>
+</div>

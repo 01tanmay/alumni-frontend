@@ -1,5 +1,5 @@
-<div class="event-wrapper">
-  <h2 class="section-title">Upcoming Events</h2>
+<div [ngStyle]="backgroundStyle">
+<h2 class="section-title">Upcoming Events</h2>
   <div *ngIf="events.length === 0" class="no-events-msg">
     No upcoming events at the moment. Please check back later!
   </div>
@@ -18,10 +18,10 @@
       </div>
       <div class="event-body">
         <p class="desc">{{ event.description }}</p>
-        <div class="badge-row">
+        <!--<div class="badge-row">
           <span class="badge">Max: {{ event.maxAttendees }}</span>
           <span class="badge">Registered: {{ event.registeredAttendees }}</span>
-        </div>
+        </div>-->
         <button
           class="register-btn"
           (click)="goToRegistration(event.id)">

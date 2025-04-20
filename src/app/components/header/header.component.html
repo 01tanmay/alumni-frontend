@@ -1,9 +1,13 @@
 <header class="header-container">
-  <!-- Logo + School Name -->
+  <!-- Logo + School Name + Tagline -->
   <div class="logo-section">
-    <!-- Optional logo -->
-    <!-- <img src="assets/logo.png" alt="School Logo" class="school-logo" /> -->
-    <h1 class="school-name">Gyan Mata Vidya Vihar Sr Sec School, Nanded</h1>
+    <div class="logo-wrapper">
+      <img src="assets/logos/gmvvs.png" alt="School Logo" class="school-logo" />
+      <div class="school-info">
+        <h1 class="school-name">Gyan Mata Vidya Vihar Sr Sec School, Nanded</h1>
+        <p class="tagline">Official Alumni Platform of Gyan Mata Vidya Vihar</p>
+      </div>
+    </div>
   </div>
 
   <!-- Navigation -->
@@ -15,11 +19,8 @@
       <li routerLinkActive="active-tab">
         <a routerLink="/events">Events</a>
       </li>
-      <li>
-        <a routerLink="/success-stories" routerLinkActive="active">Success Stories</a>
-      </li>
-      <li>
-        <a routerLink="/alumni-network" routerLinkActive="active">Alumni Network</a>
+      <li routerLinkActive="active-tab">
+        <a routerLink="/alumni-network">Alumni Network</a>
       </li>
       <li routerLinkActive="active-tab">
         <a routerLink="/contact">Contact Us</a>

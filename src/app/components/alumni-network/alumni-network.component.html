@@ -1,4 +1,36 @@
-<div class="page-section">
-  <h2>Join the Alumni Network</h2>
-  <p>This is where alumni can register to become part of the community and be discoverable by others.</p>
+<div class="network-container">
+  <div class="network-header">
+    <h2>Meet Our Alumni</h2>
+    <p>Explore stories, journeys, and connections from our community.</p>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search by name, city, or profession" [(ngModel)]="searchTerm" (input)="searchAlumni()" />
+      <button routerLink="/join-alumni-network">Join the Network</button>
+    </div>
+
+    <div class="total-count" *ngIf="totalElements > 0">
+      Showing {{ alumniList.length }} of {{ totalElements }} alumni
+    </div>
+  </div>
+
+  <div class="alumni-grid" *ngIf="alumniList.length > 0">
+    <div *ngFor="let alumni of alumniList" class="alumni-card">
+      <h3>{{ alumni.fullName }}</h3>
+      <p><strong>{{ alumni.graduationYear }}</strong> • {{ alumni.city }}</p>
+      <p>{{ alumni.profession }}</p>
+      <p class="bio">“{{ alumni.bio }}”</p>
+      <div class="links">
+        <a *ngIf="alumni.linkedin" [href]="alumni.linkedin" target="_blank">🔗 LinkedIn</a>
+        <a *ngIf="alumni.showEmail" href="mailto:{{ alumni.email }}">📧 Email</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="alumniList.length === 0">
+    <p>No alumni found. Be the first to <a routerLink="/join-alumni-network">Join the Network</a>!</p>
+  </div>
+
+  <div class="load-more" *ngIf="page + 1 < totalPages">
+    <button (click)="loadMore()">Load More</button>
+  </div>
 </div>

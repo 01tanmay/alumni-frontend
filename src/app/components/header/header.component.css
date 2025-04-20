@@ -6,20 +6,46 @@
   z-index: 1000;
 }
 
+/* === Logo & Tagline Section === */
 .logo-section {
-  padding: 14px 10px;
+  padding: 14px 20px 6px;
   text-align: center;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.school-logo {
+  height: 60px;
+  width: auto;
+}
+
+.school-info {
+  text-align: left;
 }
 
 .school-name {
   margin: 0;
-  font-size: 24px;
+  font-size: 22px;
   color: #003152;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+.tagline {
+  font-size: 13px;
+  color: #555;
+  font-weight: 500;
+  margin: 2px 0 0;
+}
+
+/* === Navigation === */
 .custom-navbar {
   background: linear-gradient(to right, #004d7a, #008793);
   padding: 8px 0;
@@ -61,10 +87,24 @@
   border-radius: 6px;
 }
 
-/* ✅ Responsive Header */
+/* === Responsive === */
 @media (max-width: 768px) {
+  .logo-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .school-logo {
+    height: 48px;
+  }
+
   .school-name {
     font-size: 18px;
+    text-align: center;
+  }
+
+  .tagline {
+    font-size: 12px;
   }
 
   .custom-navbar ul li {

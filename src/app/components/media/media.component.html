@@ -1,32 +1,48 @@
 <div class="media-container">
-  <h2 class="media-title">Media Gallery</h2>
+  <h2 class="media-title">📸 Media Gallery</h2>
   <p class="media-count">Total Media Files: <strong>{{ totalCount }}</strong></p>
 
   <!-- Image Section -->
   <div class="section-header">
-    <h3>🖼️ Images</h3>
+    <div class="section-icon">🖼️</div>
+    <h3>Images</h3>
   </div>
-  <div class="gallery" *ngIf="imageMedia.length > 0; else noImages">
-    <div *ngFor="let media of imageMedia" class="media-card image-card">
-      <img [src]="media.fileUrl" [alt]="media.fileName" />
-      <div class="file-name">{{ media.fileName }}</div>
+
+  <div class="gallery-grid" *ngIf="imageMedia.length > 0; else noImages">
+    <div *ngFor="let media of imageMedia" class="gallery-card">
+      <div class="media-thumb">
+        <img [src]="media.fileUrl" [alt]="media.fileName" />
+      </div>
+      <div class="media-footer">
+        <span class="filename">{{ media.fileName }}</span>
+        <span class="badge">Image</span>
+      </div>
     </div>
   </div>
+
   <ng-template #noImages>
-    <p class="empty-msg">No image files available.</p>
+    <div class="empty-state">No images uploaded yet.</div>
   </ng-template>
 
   <!-- Video Section -->
   <div class="section-header">
-    <h3>🎥 Videos</h3>
+    <div class="section-icon">🎥</div>
+    <h3>Videos</h3>
   </div>
-  <div class="gallery" *ngIf="videoMedia.length > 0; else noVideos">
-    <div *ngFor="let media of videoMedia" class="media-card video-card">
-      <video [src]="media.fileUrl" controls></video>
-      <div class="file-name">{{ media.fileName }}</div>
+
+  <div class="gallery-grid" *ngIf="videoMedia.length > 0; else noVideos">
+    <div *ngFor="let media of videoMedia" class="gallery-card">
+      <div class="media-thumb">
+        <video [src]="media.fileUrl" controls muted></video>
+      </div>
+      <div class="media-footer">
+        <span class="filename">{{ media.fileName }}</span>
+        <span class="badge badge-video">Video</span>
+      </div>
     </div>
   </div>
+
   <ng-template #noVideos>
-    <p class="empty-msg">No video files available.</p>
+    <div class="empty-state">No videos uploaded yet.</div>
   </ng-template>
 </div>

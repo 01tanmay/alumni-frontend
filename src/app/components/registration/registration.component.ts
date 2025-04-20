@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlumniService } from '../../services/alumni.service';
+import { RegisterService } from '../../services/register.service';
 import { EventService } from '../../services/event.service';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class RegistrationComponent implements OnInit {
     dob: '',
     utrNumber: '',
     paymentMethod: '',
-    eventId: null // ✅ Added eventId field
+    eventId: null
   };
 
   passoutYears: number[] = [];
@@ -28,7 +28,7 @@ export class RegistrationComponent implements OnInit {
   eventName: string = '';
 
   constructor(
-    private alumniService: AlumniService,
+    private registerService: RegisterService,
     private eventService: EventService,
     private route: ActivatedRoute,
     private router: Router
@@ -87,7 +87,7 @@ export class RegistrationComponent implements OnInit {
       formData.append(key, this.userData[key]);
     });
 
-    this.alumniService.registerAlumni(formData).subscribe(
+    this.registerService.registerAlumni(formData).subscribe(
       () => {
         alert('🎉 Registration successful!');
         this.router.navigate(['/registration-success']);

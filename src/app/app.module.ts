@@ -14,13 +14,14 @@ import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AlumniService } from './services/alumni.service';
+import { RegisterService } from './services/register.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
 import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
 import { AlumniNetworkComponent } from './components/alumni-network/alumni-network.component';
 import { SuccessStoriesComponent } from './components/success-stories/success-stories.component';
+import { JoinAlumniNetworkComponent } from './components/join-alumni-network/join-alumni-network.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SuccessStoriesComponent } from './components/success-stories/success-st
     AdminPortalComponent,
     AlumniNetworkComponent,
     SuccessStoriesComponent,
+    JoinAlumniNetworkComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { SuccessStoriesComponent } from './components/success-stories/success-st
     BrowserAnimationsModule,
     MatSnackBarModule,
   ],
-  providers: [AlumniService],
+  providers: [RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

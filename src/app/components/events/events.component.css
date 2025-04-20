@@ -1,81 +1,66 @@
+/* MAIN CONTAINER */
 .event-wrapper {
-  padding: 30px 20px 60px; /* 👈 Removed extra top padding */
-  background-image: url('/assets/images/building.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)),
+              url('/assets/images/building.jpg') center center / cover no-repeat fixed;
+  min-height: 100vh;
+  width: 100vw; /* Full width of viewport */
+  padding: 60px 0 80px;
   font-family: 'Segoe UI', sans-serif;
   color: #fff;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  margin: 0;
 }
 
-.event-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5); /* ✅ Mild transparent overlay */
-  z-index: 0;
-}
-
-.event-wrapper > * {
-  position: relative;
-  z-index: 1;
-}
-
+/* HEADING */
 .section-title {
-  text-align: center;
-  font-size: 34px;
+  font-size: 36px;
   font-weight: 700;
   margin-bottom: 40px;
-  color: #ffffff;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
-}
-
-.no-events-msg,
-.error-msg {
   text-align: center;
-  color: #fff;
-  background: rgba(255, 0, 0, 0.2);
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  width: 100%;
+  text-shadow: 1px 1px 4px #000;
 }
 
+/* EVENT CARDS CONTAINER */
 .card-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 20px;
 }
 
+/* INDIVIDUAL EVENT CARD */
 .event-card {
-  background: #ffffff;
-  color: #222;
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-  width: 300px;
+  background-color: #fff;
+  border-radius: 14px;
+  width: 290px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .event-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
 }
 
+/* EVENT HEADER */
 .event-header {
-  background: linear-gradient(135deg, #004d7a, #008793);
-  color: #fff;
+  background: linear-gradient(to right, #005c97, #363795);
+  color: white;
   padding: 18px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
 }
 
 .event-header h3 {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .event-header p {
@@ -83,13 +68,16 @@
   margin-top: 6px;
 }
 
+/* CARD BODY */
 .event-body {
-  padding: 18px;
+  padding: 16px;
+  color: #333;
 }
 
 .desc {
-  font-size: 15px;
-  margin-bottom: 12px;
+  font-size: 14px;
+  margin-bottom: 14px;
+  line-height: 1.4;
 }
 
 .badge-row {
@@ -97,64 +85,71 @@
 }
 
 .badge {
-  display: inline-block;
-  background-color: #e0e0e0;
-  color: #333;
+  background-color: #f0f0f0;
+  color: #444;
   font-size: 12px;
   padding: 6px 12px;
   border-radius: 20px;
   margin-right: 8px;
+  display: inline-block;
 }
 
+/* REGISTER BUTTON */
 .register-btn {
   width: 100%;
-  background: linear-gradient(to right, #004d7a, #008793);
+  background-color: #0077b6;
   color: white;
   border: none;
-  padding: 12px;
+  padding: 10px;
   font-size: 15px;
   font-weight: 600;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .register-btn:hover {
-  background: #007388;
+  background-color: #023e8a;
 }
 
-/* ✅ Responsive Design */
-
+/* ✅ MOBILE RESPONSIVE */
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 26px;
+  .event-wrapper {
+    padding: 40px 0 60px;
+    background-position: top center;
+    background-size: cover;
   }
 
-  .event-wrapper {
-    padding: 30px 10px 50px;
+  .section-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+  }
+
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
   }
 
   .event-card {
-    width: 90%;
+    width: 100%;
+    max-width: 350px;
   }
 
   .event-header h3 {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .event-header p {
+    font-size: 13px;
   }
 
   .desc {
-    font-size: 14px;
+    font-size: 13px;
   }
-}
 
-@media (max-width: 480px) {
   .register-btn {
     font-size: 14px;
-    padding: 10px;
-  }
-
-  .badge {
-    font-size: 11px;
-    padding: 5px 10px;
+    padding: 8px;
   }
 }

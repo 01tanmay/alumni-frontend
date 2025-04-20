@@ -2,7 +2,8 @@
 import { environment } from '../../environments/environment.prod';
 
 export const ApiEndpoints = {
-  alumni: `${environment.apiBaseUrl}/registration`,
+  register: `${environment.apiBaseUrl}/registration`,
   events: `${environment.apiBaseUrl}/events`,
-  media: `${environment.apiBaseUrl}/media`
+  media: `${environment.apiBaseUrl}/media`,
+  alumni: `${environment.apiBaseUrl}/alumni`,
 };

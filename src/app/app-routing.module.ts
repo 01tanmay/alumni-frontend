@@ -8,20 +8,19 @@ import { RegistrationSuccessComponent } from './components/registration-success/
 import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
 import { AlumniNetworkComponent } from './components/alumni-network/alumni-network.component';
 import { SuccessStoriesComponent } from './components/success-stories/success-stories.component';
+import { JoinAlumniNetworkComponent } from './components/join-alumni-network/join-alumni-network.component';
 
 const routes: Routes = [
   { path: 'media', component: MediaComponent },
   { path: 'events', component: EventsComponent },
   { path: 'contact', component: ContactComponent },
-  //{ path: '**', redirectTo: 'media' }, // Catch-all for invalid URLs
-  //{ path: 'registration', component: RegistrationComponent },
-  //{ path: '', redirectTo: 'media', pathMatch: 'full' },
-  //{ path: 'app-events', component: EventsComponent },
   { path: 'alumni-network', component: AlumniNetworkComponent },
   { path: 'success-stories', component: SuccessStoriesComponent },
   { path: 'registration-success', component: RegistrationSuccessComponent },
   { path: 'app-registration/:id', component: RegistrationComponent },
-   { path: 'admin', component: AdminPortalComponent },
+  { path: 'admin', component: AdminPortalComponent },
+  { path: 'join-alumni-network', component: JoinAlumniNetworkComponent },
+
 ];
 
 @NgModule({

@@ -1,0 +1,40 @@
+.onboard-form {
+  max-width: 600px;
+  margin: auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.onboard-form h2 {
+  font-size: 28px;
+  color: #0c4b85;
+}
+
+.onboard-form p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.onboard-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.onboard-form input,
+.onboard-form textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.onboard-form button {
+  background-color: #0c4b85;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
