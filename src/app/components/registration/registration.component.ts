@@ -90,7 +90,13 @@ export class RegistrationComponent implements OnInit {
     this.registerService.registerAlumni(formData).subscribe(
       () => {
         alert('🎉 Registration successful!');
-        this.router.navigate(['/registration-success']);
+        this.router.navigate(['/registration-success'], {
+          state: {
+              fullName: this.userData.fullName,
+              email: this.userData.email
+            }
+          });
+        //    this.router.navigate(['/app-registration', eventId]);
       },
       () => alert('❌ Registration failed. Please try again.')
     );

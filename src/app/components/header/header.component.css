@@ -29,19 +29,19 @@
   text-align: left;
 }
 
-.school-name {
+.alumni-platform {
   margin: 0;
   font-size: 22px;
-  color: #003152;
+  color: #0c4b85;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
-.tagline {
-  font-size: 13px;
-  color: #555;
+.school-name {
+  font-size: 14px;
   font-weight: 500;
+  color: #444;
   margin: 2px 0 0;
 }
 
@@ -98,13 +98,14 @@
     height: 48px;
   }
 
-  .school-name {
+  .alumni-platform {
     font-size: 18px;
     text-align: center;
   }
 
-  .tagline {
+  .school-name {
     font-size: 12px;
+    text-align: center;
   }
 
   .custom-navbar ul li {
