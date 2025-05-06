@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,11 +10,10 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { ContactComponent } from './components/contact/contact.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { RegisterService } from './services/register.service';
-
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationSuccessComponent } from './components/registration-success/registration-success.component';
 import { AdminPortalComponent } from './components/admin-portal/admin-portal.component';
