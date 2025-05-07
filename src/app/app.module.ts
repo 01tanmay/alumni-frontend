@@ -20,6 +20,7 @@ import { AdminPortalComponent } from './components/admin-portal/admin-portal.com
 import { AlumniNetworkComponent } from './components/alumni-network/alumni-network.component';
 import { SuccessStoriesComponent } from './components/success-stories/success-stories.component';
 import { JoinAlumniNetworkComponent } from './components/join-alumni-network/join-alumni-network.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { JoinAlumniNetworkComponent } from './components/join-alumni-network/joi
     AlumniNetworkComponent,
     SuccessStoriesComponent,
     JoinAlumniNetworkComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
